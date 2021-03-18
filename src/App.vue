@@ -1,9 +1,28 @@
 <template>
   <div id="app">
-    <h1>Hello World</h1>
     <router-view />
   </div>
 </template>
+
+<script>
+import {mapState} from 'vuex'
+
+export default {
+  name: `App`,
+  components: {
+  },
+  computed: {
+    ...mapState(['isLogin'])
+  },
+  // created () {
+  //   if(this.$store.state('isUsername')){
+  //     this.$store.commit('LOGIN',{is: true})
+  //   } else {
+  //     this.$store.commit('LOGIN',{is: false})
+  //   }
+  // }
+}
+</script>
 
 <style>
 #app {
