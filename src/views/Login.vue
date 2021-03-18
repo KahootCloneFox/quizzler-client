@@ -1,7 +1,7 @@
 <template>
   <!-- input username -->
   <section id="username">
-    <div class="container align-self-center">
+    <div class="container align-self-center mt-5">
       <div class="row justify-content-center">
         <div
           class="col-md-6 shadow p-3 mb-5 bg-body rounded"

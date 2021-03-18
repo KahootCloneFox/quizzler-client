@@ -2,19 +2,20 @@
   <!-- rooms -->
   <section id="rooms">
     <div class="container">
-      <div class="row justify-content-center mb-3">
-        <div class="">
-          <div>
+      <div class="card p-4 my-3 shadow">
+        <div class="row text-start align-items-center">
+          <div class="col"><h1>Quizzler!</h1></div>
+          <div class="col-auto">
             <button
               type="button"
-              class="col-md-4 btn btn-primary mb-3"
+              class="btn btn-primary"
               data-bs-toggle="modal"
               data-bs-target="#modalCreateRoom"
             >
-              Launch demo modal
+              Create Room
             </button>
           </div>
-          <div>
+          <div class="col-auto">
             <button @click="logout" class="btn btn-primary">Logout</button>
           </div>
         </div>
