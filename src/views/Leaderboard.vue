@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <!-- <router-link to="/Rooms">Rooms</router-link> -->
     <div class="card p-4 my-3 shadow">
       <div class="row text-start align-items-center">
         <div class="col"><h1>Leaderboard</h1></div>
@@ -11,7 +10,6 @@
     </div>
     <div class="card">
       <LeaderboardTable :users="room.participants"></LeaderboardTable>
-
     </div>
   </div>
 </template>
