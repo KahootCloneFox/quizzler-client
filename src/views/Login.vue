@@ -12,7 +12,7 @@
             style="background-color: purple; border-radius: 10px"
           >
             <div class="card-body">
-              <h1 class="text-center text-light fs-1">Kahoot!</h1>
+              <h1 class="text-center text-light fs-1">Quizzler!</h1>
               <div class="form-floating mb-3">
                 <input
                   v-model="name"

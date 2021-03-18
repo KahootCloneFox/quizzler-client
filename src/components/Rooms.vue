@@ -15,20 +15,13 @@
             </button>
           </div>
           <div>
-            <button
-              @click="logout"
-              class="btn btn-primary"
-            >Logout</button>
+            <button @click="logout" class="btn btn-primary">Logout</button>
           </div>
         </div>
       </div>
       <div class="row">
-        <div
-          class="col-lg-6 col-12"
-          v-for="(room, i) in rooms"
-          :key="i"
-        >
-          <RoomsCard :room='room' />
+        <div class="col-lg-6 col-12" v-for="(room, i) in rooms" :key="i">
+          <RoomsCard :room="room" />
         </div>
       </div>
     </div>
@@ -48,23 +41,25 @@ export default {
   components: {
     ModalCreateRoom,
     ModalCreateRoom2,
-    RoomsCard
+    RoomsCard,
   },
   methods: {
     logout() {
       delete localStorage.name
       delete localStorage.userId
       this.$router.push('/')
-    }
+    },
   },
   computed: {
-    rooms (){
+    rooms() {
       return this.$store.state.rooms
-    }
+    },
   },
-  created () {
+  created() {
     this.$socket.emit('fetchRooms')
-  }
+    const user = { name: localStorage.name, userId: localStorage.userId }
+    this.$store.commit('setUser', user)
+  },
 }
 </script>
 

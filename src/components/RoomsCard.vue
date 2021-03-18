@@ -14,21 +14,24 @@
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">{{room.name}}</h5>
+          <h5 class="card-title">{{ room.name }}</h5>
           <hr />
           <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
           <div class="card mb-3">
             <div class="card-body">
               <h5 class="card-title">Max Player</h5>
-              <h6 class="card-subtitle mb-2 text-muted">{{room.max_participant}}</h6>
+              <h6 class="card-subtitle mb-2 text-muted">
+                {{ room.max_participant }}
+              </h6>
             </div>
           </div>
           <div class="d-grid gap-2">
             <a
-              @click.prevent="joinRoom"
+              @click.prevent="joinRoom(room.id)"
               href="#"
               class="btn btn-outline-warning"
-            >Join</a>
+              >Join</a
+            >
           </div>
         </div>
       </div>
@@ -41,10 +44,10 @@ export default {
   name: 'RoomsCard',
   props: ['room'],
   methods: {
-    joinRoom() {
-      this.$router.push('/Quiz')
-    }
-  }
+    joinRoom(roomId) {
+      this.$socket.emit('joinRoom', { roomId, user: this.$store.state.user })
+    },
+  },
 }
 </script>
 
