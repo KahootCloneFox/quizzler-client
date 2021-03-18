@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Leaderboard from '../views/Leaderboard.vue'
 import Login from '../views/Login.vue'
 import Rooms from '../components/Rooms.vue'
 import Quiz from '../components/Quiz.vue'
@@ -11,17 +12,22 @@ const routes = [
     path: '/',
     name: 'Login',
     component: Login,
-  }, 
+  },
   {
     path: '/Rooms',
     name: 'Rooms',
     component: Rooms,
   },
   {
+    path: '/leaderboard',
+    name: 'Leaderboard',
+    component: Leaderboard,
+  },
+  {
     path: '/Quiz',
     name: 'Quiz',
     component: Quiz,
-  }
+  },
 ]
 
 const router = new VueRouter({

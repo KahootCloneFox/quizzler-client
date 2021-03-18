@@ -6,12 +6,16 @@
         <div class="col-md-8 d-flex">
           <h5 class="col-md-4 justify-content-between">list room
           </h5>
-          <a
+          <!-- <a
             data-bs-toggle="modal"
             data-bs-target="#createRoom"
             href=""
             class=" col-md-4 btn btn-primary"
-          >Create Room</a>
+            @click.prevent="modalCreateRoom"
+          >Create Room</a> -->
+          <button type="button" class="col-md-4 btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCreateRoom">
+            Launch demo modal
+          </button>
         </div>
       </div>
       <div class="row ">
@@ -54,16 +58,27 @@
         </div>
       </div>
     </div>
+    <ModalCreateRoom />
+    <ModalCreateRoom2 />
   </section>
   <!-- selesai rooms -->
 </template>
 
 <script>
+import ModalCreateRoom from './ModalCreateRoom'
+import ModalCreateRoom2 from './ModalCreateRoom2'
 export default {
   name: 'rooms',
+  components: {
+    ModalCreateRoom,
+    ModalCreateRoom2
+  },
   methods: {
     joinRoom (){
       this.$router.push('/Quiz')
+    },
+    modalCreateRoom () {
+
     }
   }
 }

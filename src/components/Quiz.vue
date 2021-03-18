@@ -2,6 +2,7 @@
   <!-- quiz -->
   <div class="container">
     <!-- <div class="card"> -->
+      <router-link to="/Leaderboard" >Leaderboard</router-link>
     <div class="card-body ">
       <div
         class="row justify-content-center shadow p-3 mb-5 bg-body rounded"
