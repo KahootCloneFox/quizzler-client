@@ -9,20 +9,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>99</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>12</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry the Bird</td>
-          <td>0</td>
+        <tr v-for="(user, index) in users" :key="index">
+          <th scope="row">{{ index + 1 }}</th>
+          <td>{{ user.name }}</td>
+          <td>{{ user.score }}</td>
         </tr>
       </tbody>
     </table>
@@ -31,10 +21,10 @@
 
 <script>
 export default {
-  name: 'LeaderboardTable'
+  name: 'LeaderboardTable',
+  props: ['users'],
 }
 </script>
 
 <style>
-
 </style>
