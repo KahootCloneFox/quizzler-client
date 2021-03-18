@@ -13,7 +13,10 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Create Room</h5>
+            <h5
+              class="modal-title"
+              id="exampleModalLabel"
+            >Create Room</h5>
             <button
               type="button"
               class="btn-close"
@@ -21,7 +24,10 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="progress mt-3" style="width: 80%; margin: auto">
+          <div
+            class="progress mt-3"
+            style="width: 80%; margin: auto"
+          >
             <div
               class="progress-bar bg-warning"
               role="progressbar"
@@ -35,12 +41,16 @@
           <div class="modal-body">
             <div class="row g-3 mb-2">
               <div class="col-4">
-                <label for="inputPassword6" class="col-form-label"
-                  >Max Player</label
-                >
+                <label
+                  for="inputPassword6"
+                  class="col-form-label"
+                >Max Player</label>
               </div>
               <div class="col-6">
-                <label for="customRange3" class="form-label">{{
+                <label
+                  for="customRange3"
+                  class="form-label"
+                >{{
                   $store.state.roomForm.max_participant
                 }}</label>
                 <input
@@ -68,7 +78,12 @@
             >
               Close
             </button>
-            <button @click="createRoom" type="button" class="btn btn-primary">
+            <button
+              @click="createRoom"
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
               Create!
             </button>
           </div>
@@ -89,6 +104,7 @@ export default {
         user: this.$store.state.user,
       }
       this.$socket.emit('createRoom', payload)
+      this.$store.commit('resetRoomForm')
     },
   },
 }
