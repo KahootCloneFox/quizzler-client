@@ -5,7 +5,12 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {},
-  mutations: {},
+  mutations: {
+    LOGIN(state, payload) {
+      state.isLogin = payload.is
+      state.isUsername = payload.name
+    }
+  },
   actions: {},
   modules: {},
 });
