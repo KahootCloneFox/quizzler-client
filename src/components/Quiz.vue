@@ -1,8 +1,15 @@
 <template>
   <!-- quiz -->
   <div class="container">
-    <!-- <div class="card"> -->
-    <p>{{ currentRoom }}</p>
+      <div class="card p-4 my-3 shadow">
+        <div class="row text-start align-items-center">
+          <div class="col"><h1>{{ currentRoom.name }}</h1></div>
+          <div class="col-auto">
+            <button @click="leaveRoom" class="btn btn-primary">Leave Room</button>
+          </div>
+        </div>
+      </div>
+
     <div class="card-body">
       <div
         class="row justify-content-center shadow p-3 mb-5 bg-body rounded"
@@ -10,71 +17,47 @@
       >
         <div
           class="col-3 justify-content-center d-flex"
-          style="background-color: greenyellow; border-radius: 10px"
+          style="background-color: #ff80ab; border-radius: 10px"
         >
           <h1 class="d-flex align-items-center">{{ timer }}</h1>
         </div>
         <div
           class="col-6 justify-content-center d-flex"
-          style="background-color: yellow; border-radius: 10px"
+          style="background-color: #ea80fc; border-radius: 10px"
         >
           <h1 class="d-flex align-items-center">{{ currentQuestion }}</h1>
         </div>
         <div
-          class="col-3 justify-content-center d-flex"
-          style="background-color: red; border-radius: 10px"
+          class="col-3 text-center "
+          style="background-color: #8c9eff; border-radius: 10px"
         >
-          <h1 class="d-flex align-items-center">answer</h1>
+          <div class="mt-5 row">
+            <ul class="list-group col-12">
+              <li class="list-group-item list-group-item-action list-group-item-primary" aria-current="true">Name</li>
+              <li class="list-group-item" v-for="(ans, i) in userAnswered" :key="i">{{ ans.name }}</li>
+              
+            </ul>
+          </div>
         </div>
       </div>
     </div>
     <div>
-      <!-- EDIT THIS LATER -->
-      <p>{{ userAnswered }}</p>
-      <div><button @click="leaveRoom">LEAVE ROOM</button></div>
       <br />
-      <div v-for="(ans, index) in allAnswers" :key="index">
-        <button @click="chooseAnswer(ans)">{{ ans }}</button>
-      </div>
-
-      <!-- EDIT THIS LATER -->
+      
     </div>
     <div class="row">
-      <div class="col-6 shadow p-1 mb-3 bg-body rounded">
+      <div 
+        v-for="(ans, index) in allAnswers" :key="index"
+        class="col-6 shadow p-1 mb-3 bg-body rounded">
         <div
-          :class="[border, background[0]]"
+          :class="[border, background[index]]"
           style="height: 70px; border-radius: 10px"
         >
-          <a href="" class="btn m-2 text-light">A</a>
-        </div>
-      </div>
-      <div class="col-6 shadow p-1 mb-3 bg-body rounded">
-        <div
-          class="p-1 border bg-primary"
-          style="height: 70px; border-radius: 10px"
-        >
-          <a href="" class="btn m-2 text-light">A</a>
-        </div>
-      </div>
-      <div class="col-6 shadow p-1 mb-3 bg-body rounded">
-        <div
-          class="p-1 border bg-warning"
-          style="height: 70px; border-radius: 10px"
-        >
-          <a href="" class="btn m-2 text-light">A</a>
-        </div>
-      </div>
-      <div class="col-6 shadow p-1 mb-3 bg-body rounded">
-        <div
-          class="p-1 border bg-info"
-          style="height: 70px; border-radius: 10px"
-        >
-          <a href="" class="btn m-2 text-light">A</a>
+          <a href="#" @click.prevent="chooseAnswer(ans)" class="btn m-2 text-light">{{ ans }}</a>
         </div>
       </div>
     </div>
   </div>
-  <!-- selesai quiz -->
 </template>
 
 <script>
@@ -82,7 +65,7 @@ export default {
   name: `Quiz`,
   data: () => ({
     border: 'p-1 border',
-    background: ['bg-danger'],
+    background: ['bg-danger', 'bg-warning', 'bg-primary', 'bg-info'],
   }),
   computed: {
     currentRoom() {
@@ -123,6 +106,7 @@ export default {
         user: this.user,
         roomId: this.roomId,
       })
+      this.$router.push('/')
     },
     calculateScore(ans) {
       if (ans !== this.answer) return 0
@@ -130,7 +114,6 @@ export default {
     },
     chooseAnswer(ans) {
       if (ans === 'waiting') return
-      // jika id ada di array, maka langsung return
       for (let i = 0; i < this.userAnswered.length; i++) {
         if (this.user.userId === this.userAnswered[i].userId) return
       }
@@ -144,5 +127,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.list-group{
+  padding: 0;
+}
 </style>
