@@ -1,54 +1,112 @@
 <template>
   <!-- rooms -->
-  <section id="rooms">
-    <div class="container">
-      <div class="card p-4 my-3 shadow">
-        <div class="row text-start align-items-center">
-          <div class="col"><h1>Quizzler!</h1></div>
-          <div class="col-auto">
+  <div id="rooms">
+    <nav
+      class="navbar is-light"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <div class="navbar-brand">
+        <a class="navbar-item">
+          <img
+            src="../assets/logo.png"
+            alt="sglogo"
+          >
+        </a>
+      </div>
+
+      <div
+        id="navbarBasicExample"
+        class="navbar-menu"
+      >
+        <div class="navbar-start">
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
             <button
               type="button"
-              class="btn btn-primary"
-              data-bs-toggle="modal"
-              data-bs-target="#modalCreateRoom"
+              class="button is-black"
+              @click="CreateRoom"
             >
               Create Room
             </button>
           </div>
-          <div class="col-auto">
-            <button @click="logout" class="btn btn-primary">Logout</button>
+          <div class="navbar-item">
+            <div class="buttons">
+              <a
+                class="button is-grey"
+                @click.prevent="logout"
+              >
+                <strong>Logout</strong>
+              </a>
+            </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-6 col-12" v-for="(room, i) in rooms" :key="i">
-          <RoomsCard :room="room" />
+    </nav>
+    <div>
+      <!-- ROOM CARDS -->
+      <div class="column is-main-content">
+        <div class="container is-widescreen">
+          <div
+            id="main-columns"
+            class="columns is-multiline"
+          >
+            <div
+              id="child-columns"
+              class="column"
+              v-for="(room, i) in rooms"
+              :key="i"
+            >
+              <div
+                class="box"
+                style="height: 42vh;width: 17vw;"
+              >
+                <img
+                  src="../assets/bg2.jpeg"
+                  style='overflow: hidden;'
+                >
+                <p style="text-align: center;">
+                  <strong style="font-size: 21px;"> {{room.name}} </strong>
+                </p>
+                <p>
+                  <span style="font-size: 14px;"> Max Player : {{room.max_participant}} </span>
+                </p>
+                <button>
+                  <a
+                    @click.prevent="joinRoom(room.id)"
+                    href="#"
+                  >Join Room</a>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- END ROOM CARDS -->
         </div>
       </div>
     </div>
-    <ModalCreateRoom />
-    <ModalCreateRoom2 />
-  </section>
+  </div>
   <!-- selesai rooms -->
 </template>
 
 <script>
-import ModalCreateRoom from './ModalCreateRoom'
-import ModalCreateRoom2 from './ModalCreateRoom2'
-import RoomsCard from './RoomsCard'
 
 export default {
   name: 'rooms',
   components: {
-    ModalCreateRoom,
-    ModalCreateRoom2,
-    RoomsCard,
   },
   methods: {
     logout() {
       delete localStorage.name
       delete localStorage.userId
       this.$router.push('/')
+    },
+    CreateRoom() {
+      this.$router.push('/CreateRoom')
+    },
+    joinRoom(roomId) {
+      this.$socket.emit('joinRoom', { roomId, user: this.$store.state.user })
     },
   },
   computed: {
@@ -64,5 +122,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+img {
+  z-index: -1;
+}
 </style>

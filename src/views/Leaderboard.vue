@@ -1,16 +1,58 @@
 <template>
   <div class="container">
-    <div class="card p-4 my-3 shadow">
-      <div class="row text-start align-items-center">
-        <div class="col"><h1>Leaderboard</h1></div>
-        <div class="col-auto">
-          <router-link to="/" class="btn btn-primary">Leave Room</router-link>
+    <nav
+      class="navbar"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <div class="navbar-brand">
+        <a
+          class="navbar-item"
+          href="#"
+        >
+          <i class="fas fa-chess-king"></i>
+          Leaderboard
+        </a>
+      </div>
+
+      <div
+        id="navbarBasicExample"
+        class="navbar-menu"
+      >
+        <div class="navbar-start">
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <router-link
+                to="/"
+                class="button is-black"
+              >Leave Room</router-link>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </nav>
+
     <div class="card">
       <LeaderboardTable :users="room.participants"></LeaderboardTable>
     </div>
+
+    <figure class="image">
+      <div style="
+        display: flex;
+        justify-content: center;
+        padding-top: 15px;
+        ">
+        <img
+          src="../assets/bgDone.jpeg"
+          alt=""
+          srcset=""
+          style="width:200px;height:265px;"
+        >
+      </div>
+    </figure>
   </div>
 </template>
 

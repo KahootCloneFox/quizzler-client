@@ -4,6 +4,7 @@ import Leaderboard from '../views/Leaderboard.vue'
 import Login from '../views/Login.vue'
 import Rooms from '../components/Rooms.vue'
 import Quiz from '../components/Quiz.vue'
+import CreateRoom from '../components/CreateRoom.vue'
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,11 @@ const routes = [
     name: 'Quiz',
     component: Quiz,
   },
+  {
+    path: '/CreateRoom',
+    name: 'CreateRoom',
+    component: CreateRoom,
+  }
 ]
 
 const router = new VueRouter({
