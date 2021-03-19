@@ -5,28 +5,18 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
 
 export default {
   name: `App`,
   components: {
-  },
-  computed: {
-    ...mapState(['isLogin'])
-  },
-  // created () {
-  //   if(this.$store.state('isUsername')){
-  //     this.$store.commit('LOGIN',{is: true})
-  //   } else {
-  //     this.$store.commit('LOGIN',{is: false})
-  //   }
-  // }
+  }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'DotGothic16', sans-serif;
+  letter-spacing: 2px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

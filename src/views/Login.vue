@@ -1,44 +1,79 @@
 <template>
-  <!-- input username -->
-  <section id="username">
-    <div class="container align-self-center mt-5">
-      <div class="row justify-content-center">
+  <div
+    id="login-page"
+    style="padding-top: 50px;"
+  >
+    <!-- This is Form login -->
+    <div
+      class=""
+      id="form-login"
+      style="height: 77vh;"
+    >
+
+      <!-- This is Welcoming Title -->
+      <div
+        class="container column"
+        style="display: flex; text-align: center; justify-content: center; align-items: center; align-content: center; margin-bottom: 55px; margin-top: 20px; padding-left: 700px;"
+      >
+
         <div
-          class="col-md-6 shadow p-3 mb-5 bg-body rounded"
-          style="border-radius: 10px"
+          class="box is-pulled-right"
+          style="background-color: white;"
         >
-          <div
-            class="card mb-2"
-            style="background-color: purple; border-radius: 10px"
+          <img
+            alt="Vue logo"
+            src="../assets/logo.png"
           >
-            <div class="card-body">
-              <h1 class="text-center text-light fs-1">Quizzler!</h1>
-              <div class="form-floating mb-3">
+          <p class="subtitle is-white is-6">Are you <strong>ready</strong> ?
+          </p>
+
+        </div>
+      </div>
+      <!-- This is the end of Welcoming Title -->
+
+      <div
+        class=""
+        style="display: flex; justify-content: center; align-items: center; align-content: center;"
+      >
+        <div style="display: flex; justify-content: center; align-items: center; align-content: center; padding-left: 700px;">
+          <form
+            class="box column"
+            style="background-color: white; box-shadow: 0px 0px 20px rgb(211,211,211);"
+          >
+            <div>
+              <p style="margin: 0px 0px 10px 0px;">
+              </p>
+            </div>
+            <div class="field">
+              <label class="label">Username</label>
+              <div class="control has-icons-left">
                 <input
                   v-model="name"
-                  type="text"
-                  class="form-control mt-4"
-                  id="floatingInput"
-                  placeholder="name@example.com"
-                />
-                <label for="floatingInput">Username</label>
-                <div class="d-grid gap-2">
-                  <button
-                    @click="login"
-                    class="btn btn-warning mt-3"
-                    type="button"
-                  >
-                    Submit
-                  </button>
-                </div>
+                  class="input"
+                  id="email"
+                  type="email"
+                  placeholder="e.g. Zelda"
+                >
+                <span class="icon is-small is-left">
+                  <i class="fas fa-gamepad"></i>
+                </span>
               </div>
             </div>
-          </div>
+            <button
+              type="submit"
+              id="login-btn"
+              class="button is-black"
+              @click.prevent="login"
+            >Login</button>
+            <br><br>
+            <div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-  </section>
-  <!-- selesai input username -->
+    <!-- This is the end of login page -->
+  </div>
 </template>
 
 <script>
@@ -65,5 +100,12 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+#login-page {
+  background-image: url('../assets/bg.jpeg');
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: left;
+  background-attachment: fixed;
+}
 </style>

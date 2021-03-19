@@ -79,7 +79,7 @@ export default new Vuex.Store({
     },
     SOCKET_failedJoinRoom(context, payload) {
       console.log('ROOM SUDAH PENUH')
-      // TODO swal ketika room penuh
+      Vue.swal('Room is Full !');
       context.commit('setRooms', payload)
     },
     SOCKET_sendQuestion(context, payload) {

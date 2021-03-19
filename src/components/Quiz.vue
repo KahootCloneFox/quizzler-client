@@ -1,61 +1,102 @@
 <template>
   <!-- quiz -->
-  <div class="container">
-      <div class="card p-4 my-3 shadow">
-        <div class="row text-start align-items-center">
-          <div class="col"><h1>{{ currentRoom.name }}</h1></div>
-          <div class="col-auto">
-            <button @click="leaveRoom" class="btn btn-primary">Leave Room</button>
+  <div id="quiz-page">
+    <div class="container">
+
+      <nav
+        class="navbar"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div class="navbar-brand">
+          <a
+            class="navbar-item"
+            href="#"
+          >
+            <i class="fas fa-chess-rook"></i>
+            {{ currentRoom.name }}
+          </a>
+        </div>
+
+        <div
+          id="navbarBasicExample"
+          class="navbar-menu"
+        >
+          <div class="navbar-start">
+          </div>
+
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a
+                  class="button is-black"
+                  @click="leaveRoom"
+                >
+                  Leave Room
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </nav>
 
-    <div class="card-body">
-      <div
-        class="row justify-content-center shadow p-3 mb-5 bg-body rounded"
-        style="min-height: 400px"
-      >
-        <div
-          class="col-3 justify-content-center d-flex"
-          style="background-color: #ff80ab; border-radius: 10px"
-        >
-          <h1 class="d-flex align-items-center">{{ timer }}</h1>
-        </div>
-        <div
-          class="col-6 justify-content-center d-flex"
-          style="background-color: #ea80fc; border-radius: 10px"
-        >
-          <h1 class="d-flex align-items-center">{{ currentQuestion }}</h1>
-        </div>
-        <div
-          class="col-3 text-center "
-          style="background-color: #8c9eff; border-radius: 10px"
-        >
-          <div class="mt-5 row">
+      <div class="card">
+
+        <header class="card-header">
+          <p class="card-header-title">
+            The Quiz
+          </p>
+          <div class="">
+            Time remaining : {{ timer }}
+          </div>
+        </header>
+
+        <div class="card-content">
+
+          <div class="column has-text-weight-semibold is-size-4">
+            {{ currentQuestion }}
+          </div>
+
+          <div class="column">
             <ul class="list-group col-12">
-              <li class="list-group-item list-group-item-action list-group-item-primary" aria-current="true">Name</li>
-              <li class="list-group-item" v-for="(ans, i) in userAnswered" :key="i">{{ ans.name }}</li>
-              
+              <li
+                class="list-group-item"
+                v-for="(ans, i) in userAnswered"
+                :key="i"
+              >{{ ans.name }} has Answered</li>
             </ul>
           </div>
         </div>
+
+        <footer class="card-footer">
+          <div
+            :class="[border, background[index]]"
+            style="height: 70px; border-radius: 10px"
+            v-for="(ans, index) in allAnswers"
+            :key="index"
+          >
+            <a
+              href="#"
+              @click.prevent="chooseAnswer(ans)"
+              class="button is-light"
+            >{{ ans }}</a>
+          </div>
+        </footer>
       </div>
-    </div>
-    <div>
-      <br />
-      
-    </div>
-    <div class="row">
-      <div 
-        v-for="(ans, index) in allAnswers" :key="index"
-        class="col-6 shadow p-1 mb-3 bg-body rounded">
-        <div
-          :class="[border, background[index]]"
-          style="height: 70px; border-radius: 10px"
-        >
-          <a href="#" @click.prevent="chooseAnswer(ans)" class="btn m-2 text-light">{{ ans }}</a>
+      <figure class="image">
+        <div style="
+        display: flex;
+        justify-content: center;
+        padding-top: 15px;
+        ">
+          <img
+            src="../assets/bgPlay.jpeg"
+            alt=""
+            srcset=""
+            style="width:200px;height:265px;"
+          >
         </div>
-      </div>
+      </figure>
     </div>
   </div>
 </template>
@@ -128,7 +169,7 @@ export default {
 </script>
 
 <style scoped>
-.list-group{
+.list-group {
   padding: 0;
 }
 </style>
