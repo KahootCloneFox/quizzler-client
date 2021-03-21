@@ -30,7 +30,7 @@ const routes = [
     component: Quiz,
   },
   {
-    path: '/CreateRoom',
+    path: '/createRoom',
     name: 'CreateRoom',
     component: CreateRoom,
   }

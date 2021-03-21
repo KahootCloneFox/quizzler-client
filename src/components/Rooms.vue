@@ -103,7 +103,7 @@ export default {
       this.$router.push('/')
     },
     CreateRoom() {
-      this.$router.push('/CreateRoom')
+      this.$router.push('/createRoom')
     },
     joinRoom(roomId) {
       this.$socket.emit('joinRoom', { roomId, user: this.$store.state.user })

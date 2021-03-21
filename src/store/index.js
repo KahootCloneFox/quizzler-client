@@ -30,7 +30,6 @@ export default new Vuex.Store({
       localStorage.userId = user.userId
     },
     setCurrentRoom(state, room) {
-      console.log('ini commitss')
       state.room = room
     },
     setQuestion(state, question) {
@@ -59,7 +58,6 @@ export default new Vuex.Store({
   },
   actions: {
     SOCKET_sendRooms(context, payload) {
-      console.log(payload)
       context.commit('setRooms', payload)
     },
     SOCKET_sendUser(context, payload) {
